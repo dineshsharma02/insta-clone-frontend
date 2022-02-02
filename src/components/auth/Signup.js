@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { useState } from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 
 const Signup = () => {
@@ -51,6 +54,7 @@ const Signup = () => {
 
   return(
   <div>
+      <Link to="/login">Login</Link>
       <form onSubmit={handleRegister}> 
       <h3>Sign Up!</h3>
       <label htmlFor="email">Email</label>
