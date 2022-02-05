@@ -3,11 +3,8 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const NewPost = () => {
-  // const [image, setImage] = useState(null);
-  const [state, setState] = useState({
-    caption: '',
-    image: null
-  });
+  const [image, setImage] = useState(null);
+  const [caption, setCaption] = useState('');
   const [credentials, setCredentials] = useState({
     'username':'admin',
     'password':1898,
@@ -15,10 +12,10 @@ const NewPost = () => {
   const handleSubmit=(e)=>{
     e.preventDefault()
     console.log("This is onsubmit");
-    console.log(state);
     let form_data = new FormData();
-    form_data.append('image', state.image, state.image.name);
-    form_data.append('caption', state.caption);
+    console.log(image,image.name,caption);
+    form_data.append('image', image, image.name);
+    form_data.append('caption', caption);
     let url = 'http://127.0.0.1:8000/postimage/'
     axios.post(url,form_data,{
       headers:{
@@ -34,20 +31,16 @@ const NewPost = () => {
 
   }
   const onChange=(e)=>{
-    setState({
-      caption:e.target.value
-      
-    })
+    setCaption(e.target.value)
     console.log(e.target.id,"=",e.target.value);
-    console.log(state.caption);
+    console.log(caption);
   }
 
   const handleImageChange = (e) => {
     console.log("its image change");
-    setState({
-      image:e.target.files[0]
-    })
-    console.log(state.image);
+    
+    setImage(e.target.files[0])
+    console.log(image);
   };
   return <div>
     <h3>Post New Photo here</h3>
