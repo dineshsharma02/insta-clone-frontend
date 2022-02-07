@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './style.css';
 import { useState } from 'react';
 import {
     Link
@@ -53,12 +53,18 @@ const Signup = () => {
 
 
   return(
-  <div>
-      <Link to="/login">Login</Link>
-      <form onSubmit={handleRegister}> 
-      <h3>Sign Up!</h3>
+  
+
+
+
+
+    <div className='container'>
+    
+    
+    <form onSubmit={handleRegister}> 
+    <h3>Sign Up!</h3>
       <label htmlFor="email">Email</label>
-      <input type="email" name="email" id="email" onChange={onChange} />
+      <input type="email" name="email" id="email"  onChange={onChange} />
       <br />
       <br />
       <label htmlFor="fullname">First Name</label>
@@ -80,9 +86,15 @@ const Signup = () => {
       <input type="text" name="cpassword" id="cpassword" onChange={onChange} />
       <br /><br />
       <input type="submit" value="Register" />
-      </form>
-      
-  </div>
+    </form>
+
+    <div className="options">
+    <p>Already have an account?<Link className='link' to="/login"> Login</Link></p>
+    <Link className='link' to="/signup">Forgot Password?</Link>
+    </div>
+    </div>
+
+    
   );
 };
 
