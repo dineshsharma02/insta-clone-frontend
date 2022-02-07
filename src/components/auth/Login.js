@@ -4,13 +4,10 @@ import {
   } from "react-router-dom";
 
 import { useState } from 'react';
+import './style.css';
 
 const Login = () => {
-    // const make_base_auth=(user, password)=> {
-    //     var tok = user + ':' + password;
-    //     var hash = Base64.encode(tok);
-    //     return "Basic " + hash;
-    //   }
+    
 
     const [credentials, setCredentials] = useState({
         'username':'abc',
@@ -46,15 +43,29 @@ const Login = () => {
         }
     }
   return (
-  <div>
-      <Link to="/signup">Sign Up here!</Link>
+  <div className='container'>
+      <div className="left-container">
+          
+      </div>
+      
+      <div className="right-container">
       <h3>Login</h3>
       <form method="get" onSubmit={handleLogin}>
-      <input type="text" name="username" id="" onChange={onChange} />
-      <br /><br />
-      <input type="text" name="password" id="" onChange={onChange} />
-      <input type="submit" value="Submit" />
+        <div className="form-container">
+        <input type="text" name="username" id="" onChange={onChange} placeholder="Username" />
+        
+        <input type="text" name="password" id="" onChange={onChange} placeholder="Password" />
+        
+        <input class="btn" type="submit" value="Login" />
+        </div>
       </form>
+      
+      <div className="options">
+      <p>Don't have an account?<Link className='link' to="/signup"> Sign up</Link></p>
+      <Link className='link' to="/signup">Forgot Password?</Link>
+      </div>
+      </div>
+      
   </div>
   );
 };
