@@ -4,7 +4,7 @@ import {
   } from "react-router-dom";
 
 import { useState } from 'react';
-import './style.css';
+import '../css/style.css';
 
 const Login = () => {
     
