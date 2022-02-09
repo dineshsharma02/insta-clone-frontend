@@ -34,10 +34,17 @@ body{
 
 .navbar .nav-box .options-box i{
     margin: 10px;
-    /* font-size: 1.4em; */
+    transition: transform .2s;
+    
+}
+
+.navbar .nav-box .options-box i:hover{
+    transform: scale(1.2);
+    color: #C9485B;
 }
 .navbar{
     font-size: 1.5em;
+    
     background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -87,6 +94,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
 .dropdown:hover .dropdown-content{
     display: flex;
     flex-direction: column;
+    
 }
 
 .dropdown-content li{
