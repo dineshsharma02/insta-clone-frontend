@@ -18,6 +18,7 @@ body{
     padding-bottom: auto;
     position: sticky;
     justify-content: center;
+    overflow:visible;
     
 }
 
@@ -57,4 +58,40 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
 
 .navbar .nav-box .logo-box {
     font-family: cursive;
+}
+
+.navbar .nav-box .options-box a{
+    color:white;
+
+    
+}
+.navbar .nav-box .options-box  i{
+    color: white;
+}
+
+.dropdown{
+    
+    position:inherit;
+    display: inline-block;
+    
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content li{
+    color:black;
+    list-style: none;
+    font-size: small;
+    margin: 10px;
 }

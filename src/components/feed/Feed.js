@@ -1,10 +1,15 @@
 import React from 'react';
-
+import '../css/feed.css';
+import Feeditem from './Feeditem';
 const Feed = () => {
   return(
-    <div>
-
-      hahaha
+    <div className='feed-posts'>
+      <Feeditem/>
+      <Feeditem/>
+      {/* <Feeditem/>
+      <Feeditem/>
+      <Feeditem/>
+      <Feeditem/> */}
     </div>
   )
 };

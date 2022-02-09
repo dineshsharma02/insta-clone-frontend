@@ -20,7 +20,11 @@ function App() {
     <Router>
       <Navbar/>
       <Routes>
-        <Route path={"/"} element={<Feed/>}></Route>
+        <Route path={"/"} element={
+          <div className='feed-container'>
+            <Feed/>
+          </div>
+        }></Route>
         <Route path={"/login"} element={<Login/>}></Route>
         <Route path={"/signup"} element={<Signup/>}></Route>
         <Route path={"/newpost"} element={<NewPost/>}></Route>

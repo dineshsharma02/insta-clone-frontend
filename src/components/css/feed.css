@@ -1,0 +1,23 @@
+.feed-posts{
+    
+    padding: 10px;
+    
+}
+.post-container{
+    margin: 45px;
+    width: 45vw;
+    height:50vh;
+    /* background-color: aqua; */
+}
+.image-area{
+    background-image: url('../feed/me.jpg');
+    background-size:contain;
+    height: 50vh;
+    width: 45vw;
+    background-repeat: no-repeat;
+
+}
+.image-area img{
+    width: 400px;
+    height: 400px;
+}

@@ -1,5 +1,8 @@
 import React from 'react';
 import './navbar.css';
+import {
+  Link
+} from "react-router-dom";
 const Navbar = () => {
   return(
     <div className='navbar'>
@@ -9,12 +12,19 @@ const Navbar = () => {
           <input type="search" name="" id="" placeholder='Search'/>
         </div>
         <div className="options-box">
-        <i class="fas fa-home"></i>
+        <Link to="/"><i class="fas fa-home"></i></Link>
         <i class="fas fa-inbox"></i>
-        <i class="fas fa-upload"></i>
+        <Link to="newpost/"><i class="fas fa-upload"></i></Link>
         <i class="fas fa-heart"></i>
-        <i class="fas fa-home"></i>
-        <i><img src=" " alt="" /></i>
+        <div className="dropdown">
+        <i class="fas fa-user"></i>
+        <div className="dropdown-content">
+        <li>User info</li>
+        <hr />
+          <Link to="login/"><li>Logout</li></Link>
+           
+          </div>
+        </div>
         </div>
       </div>
   </div>
