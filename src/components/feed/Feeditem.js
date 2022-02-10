@@ -9,7 +9,7 @@ const Feeditem = () => {
         <div className="post-details-area">
           <div className="post-options">
             <div className="left-options">
-              <i class="fa fa-heart"></i>
+            <i class="fa fa-heart"></i>
               <i class="fa fa-comment"></i>
               <i class="fa fa-send-o"></i>
             </div>
@@ -21,7 +21,7 @@ const Feeditem = () => {
             10000likes
           </div>
           <div className="caption-box">
-            Dinesh.sharma02 here goes the caption of the post
+            <b>Dinesh.sharma02</b> here goes the caption of the post
           </div>
           <div className="comments">
             View all 506 comments
