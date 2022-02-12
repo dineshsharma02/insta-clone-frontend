@@ -1,11 +1,17 @@
 import React from 'react'
 import postimage from './me.jpg';
+import { useState,useEffect } from 'react';
 
-const Feeditem = () => {
+const Feeditem = (props) => {
+
+  let {username,image,likes,comments,caption,date} = props
+  console.log(image);
+
+
   return (
-    <div className='post-container'>
-        <div className="username-area">Dinesh.sharma02</div>
-        <div className="image-area"><img src={postimage} alt="" /></div>
+    <div className='post-container'>     
+        <div className="username-area">{username}</div>
+        <div className="image-area"><img src={image} alt="not found" /></div>
         <div className="post-details-area">
           <div className="post-options">
             <div className="left-options">
@@ -18,15 +24,15 @@ const Feeditem = () => {
             </div>
           </div>
           <div className="liked-by">
-            10000likes
+            {likes} likes
           </div>
           <div className="caption-box">
-            <b>Dinesh.sharma02</b> here goes the caption of the post
+            <b>{username}</b> {caption}
           </div>
           <div className="comments">
-            View all 506 comments
+            View all {comments} comments
           </div>
-          <span>8 hours ago</span>
+          <span>{date}</span>
           <div className="comment-bar">
           <span><input type="text" placeholder='Add a comment' /></span>
           <span><input type="submit" /></span>
