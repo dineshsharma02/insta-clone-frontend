@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
+import "../css/modal.css"
+import Me from "../feed/me.jpg"
 
 const NewPost = () => {
   const [image, setImage] = useState(null);
@@ -42,16 +45,51 @@ const NewPost = () => {
     setImage(e.target.files[0])
     console.log(image);
   };
-  return <div>
-    <h3>Post New Photo here</h3>
-    <form onSubmit={handleSubmit}>
-      
-    <input type="file" name="image" id="image" onChange={handleImageChange}/>
-    <input type="text" name="caption" id="caption" onChange={onChange}/>
-    <input type="submit" value="Post" />
-    </form>
-  </div>;
+  return( 
+  
+  <>
 
-};
+  <div className="modal">
+          <div className="modal-content">
+              <div className="modal-header">
+                  <div className="heading">
+                  <h3 className="modal-title">Create New Post</h3>
+                  </div>
+                  
+                  <Link to="/"><i class="fas fa-times"></i></Link>
+              </div>
+              <br />
+              <div className="modal-body newpost">
+              <i class="fas fa-images upload-image"></i>
+              <br/>
+              <form onSubmit={handleSubmit}>
+
+                <input className='button-upload' type="file" name="image" id="image" onChange={handleImageChange}/>
+                <input class="caption-input" type="text" name="caption" id="caption" onChange={onChange} placeholder="Write a caption..."/>
+                <br/>
+                <br/>
+                <input className='button-follow' type="submit" value="Post" />
+                </form>
+              </div>
+
+              
+
+
+
+              
+          </div>
+      </div>
+
+
+  </>
+
+
+  
+
+
+
+
+
+  )};
 
 export default NewPost;
