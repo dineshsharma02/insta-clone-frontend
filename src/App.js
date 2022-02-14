@@ -13,6 +13,8 @@ import Signup from './components/auth/Signup';
 import NewPost from './components/feed/NewPost';
 import Navbar from './components/navbar/Navbar';
 import Feed from './components/feed/Feed';
+import Modal from './components/Utils/Modal';
+
 
 function App() {
   return (
@@ -24,10 +26,13 @@ function App() {
           <div className='feed-container'>
             <Feed/>
           </div>
-        }></Route>
+        }>
+          
+        </Route>
         <Route path={"/login"} element={<Login/>}></Route>
         <Route path={"/signup"} element={<Signup/>}></Route>
         <Route path={"/newpost"} element={<NewPost/>}></Route>
+        <Route path={"post/likes"} element={<Modal/>}></Route>  
       </Routes>
     </Router>
     );

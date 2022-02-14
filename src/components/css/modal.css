@@ -1,0 +1,87 @@
+/* body{
+    background-color: #575757;
+} */
+
+.modal{
+    display: flex;
+    width: 400px;
+    background-color: #FFFFFF;
+    /* margin: auto auto auto auto; */
+    border: 1px solid transparent;
+    margin-top: 40px;
+    padding: 10px;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: scroll;
+    border-radius: 20px;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+.modal-body ul{
+    width:fit-content;
+}
+
+.modal::-webkit-scrollbar{
+    width: 8px;
+}
+.modal::-webkit-scrollbar-track{
+    background-color: #eeeeee;
+}
+.modal::-webkit-scrollbar-thumb{
+    
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+.modal::-webkit-scrollbar-button{ 
+    color: #000;
+}
+.modal-content{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    width: 100%;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid pink;
+    
+}
+.heading{
+    padding-left: 43%;
+}
+.modal-header i{
+    font-size: large;
+}
+
+.modal-body{
+    padding: 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-bottom: 10px;
+}
+
+.modal-body .info{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+.button-follow{
+    background-color: #0095F6;
+    padding: 1px 5px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+
+}
+
+.modal-body img{
+    border-radius: 1000px;
+    margin-right: 30px ;
+}

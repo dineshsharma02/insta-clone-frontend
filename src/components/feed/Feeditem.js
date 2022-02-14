@@ -1,6 +1,9 @@
 import React from 'react'
 import postimage from './me.jpg';
 import { useState,useEffect } from 'react';
+import {
+  Link
+} from "react-router-dom";
 
 const Feeditem = (props) => {
 
@@ -24,7 +27,7 @@ const Feeditem = (props) => {
             </div>
           </div>
           <div className="liked-by">
-            {likes} likes
+            {likes} <Link to={"post/likes"}>likes</Link>
           </div>
           <div className="caption-box">
             <b>{username}</b> {caption}
