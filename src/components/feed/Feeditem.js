@@ -38,7 +38,7 @@ const Feeditem = (props) => {
         console.log(json);
         if (response.status===200){
             console.log("Posts fetched");
-            setPosts(json)
+            // setPosts(json)
             
         }
         else{

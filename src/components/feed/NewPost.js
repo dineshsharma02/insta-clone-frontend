@@ -1,9 +1,14 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import "../css/modal.css"
 import Me from "../feed/me.jpg"
+
+import Done from "../Utils/Done"
+
+
+
 
 const NewPost = () => {
   const [image, setImage] = useState(null);
@@ -20,14 +25,19 @@ const NewPost = () => {
     form_data.append('image', image, image.name);
     form_data.append('caption', caption);
     let url = 'http://127.0.0.1:8000/postimage/'
-    axios.post(url,form_data,{
-      headers:{
-        'content-type': 'multipart/form-data',
-        'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
-    },
-    })
+    const response  =  axios.post(url,form_data,{
+        headers:{
+          'content-type': 'multipart/form-data',
+          'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+      },
+      })
+
+    
     .then(res => {
       console.log(res.data);
+      console.log("photo uploaded");
+      showGif()
+      
       
     })
     .catch(err => console.log(err))
@@ -46,6 +56,14 @@ const NewPost = () => {
     setImage(e.target.files[0])
     console.log(image);
   };
+
+  const showGif=()=>{
+    <Done></Done>
+    
+  }
+
+
+
   return( 
   
   <>
@@ -80,8 +98,8 @@ const NewPost = () => {
               
           </div>
       </div>
-
-
+      
+      {/* <Done></Done>  */}
   </>
 
 
