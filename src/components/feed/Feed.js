@@ -48,6 +48,7 @@ const Feed = () => {
     <div className='feed-posts'>
       {posts.map((element)=>{
         return <Feeditem 
+        id = {element.id}
         username = {element.username}
         image = {element.image}
         likes = {element.total_likes}

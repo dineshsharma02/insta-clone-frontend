@@ -8,7 +8,7 @@ import AddComment from './AddComment';
 
 const Feeditem = (props) => {
 
-  let {username,image,likes,comments,caption,date} = props
+  let {id,username,image,likes,comments,caption,date} = props
   console.log(image);
   const [userInfo, setUserInfo] = useState({
     'username':'',
@@ -76,7 +76,7 @@ const Feeditem = (props) => {
             View all {comments} comments
           </div>
           <span>{date}</span>
-          <AddComment></AddComment>
+          <AddComment id={id}></AddComment>
         </div>
     </div>
   )
