@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import {
   Link
 } from "react-router-dom";
+import AddComment from './AddComment';
 
 const Feeditem = (props) => {
 
@@ -75,10 +76,7 @@ const Feeditem = (props) => {
             View all {comments} comments
           </div>
           <span>{date}</span>
-          <div className="comment-bar">
-          <span><input type="text" placeholder='Add a comment' /></span>
-          <span><input type="submit" /></span>
-          </div>
+          <AddComment></AddComment>
         </div>
     </div>
   )
