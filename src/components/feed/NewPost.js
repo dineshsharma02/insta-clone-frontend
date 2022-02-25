@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
 import "../css/modal.css"
 import Me from "../feed/me.jpg"
 
@@ -11,6 +11,21 @@ import Done from "../Utils/Done"
 
 
 const NewPost = () => {
+  let history = useNavigate();
+  let token = localStorage['authtoken']
+  useEffect(() => {
+    
+  console.log(token);
+  
+  if(!token){
+    history(
+      "/login"
+    )
+  }
+  
+    
+  }, [])
+  
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState('');
   const [credentials, setCredentials] = useState({
@@ -28,7 +43,7 @@ const NewPost = () => {
     const response  =  axios.post(url,form_data,{
         headers:{
           'content-type': 'multipart/form-data',
-          'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+          'Authorization': `Bearer ${token}`
       },
       })
 

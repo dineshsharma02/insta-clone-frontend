@@ -1,26 +1,29 @@
 import React from 'react';
 import '../css/feed.css';
 import Feeditem from './Feeditem';
-
+import { Link ,useNavigate} from 'react-router-dom'
 import { useState,useEffect } from 'react';
 const Feed = () => {
   
   const [posts, setPosts] = useState([])
-
-  const [credentials, setCredentials] = useState({
-    'username':'admin',
-    'password':1898,
-});
+  let history = useNavigate();
+  
   
 
 
 
   useEffect(async() => {
+    let token = localStorage['authtoken']
+    console.log(token);
+    if (!token){
+      history("/login",{replace:true})
+    }
     const response = await fetch("http://127.0.0.1:8000/postimage/",{
             method:"GET",
             headers:{
                 "Content-type":"application/json",
-                'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+                'Authorization': `Bearer ${token}`
+
             },
             
         });

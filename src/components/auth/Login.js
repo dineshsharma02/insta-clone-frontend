@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-    Link
+    Link, useNavigate
   } from "react-router-dom";
 
 import { useState } from 'react';
 import '../css/style.css';
 
 const Login = (props) => {
-    
+    let history = useNavigate();
 
     const [credentials, setCredentials] = useState({
         'username':'abc',
@@ -23,14 +23,14 @@ const Login = (props) => {
         e.preventDefault();
         console.log(credentials.username,credentials.password);
         let token = localStorage.getItem['token']
-        if (token){
-            this.props.history.push('/')
-        }
+        // if (token){
+        //     this.props.history.push('/')
+        // }
         const response = await fetch("http://127.0.0.1:8000/api/token/",{
             method:"POST",
             headers:{
                 "Content-type":"application/json",
-                // 'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 "username":`${credentials.username}`,
@@ -43,12 +43,13 @@ const Login = (props) => {
         console.log(response.status)
         console.log(json);
         if (response.status===200){
+            history("/",{replace:true})
             console.log("User Logged in");
             console.log(response);
-            window.localStorage.setItem("token",json['access'])
-            window.localStorage.setItem("refreshtoken",json['refresh'])
-            const token = localStorage.getItem("token")
-            const refresh = localStorage.getItem("refreshtoken")
+            window.localStorage.setItem("authtoken",json['access'])
+            window.localStorage.setItem("authrefreshtoken",json['refresh'])
+            const token = localStorage.getItem("auth-token")
+            const refresh = localStorage.getItem("auth-refreshtoken")
             console.log(token,refresh);
         }
         else{

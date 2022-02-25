@@ -1,9 +1,18 @@
 import React from 'react';
 import './navbar.css';
 import {
-  Link
+  Link, useNavigate
 } from "react-router-dom";
+
+
 const Navbar = () => {
+  const navigate = useNavigate()
+  const handleLogout=()=>{
+    localStorage.removeItem("authtoken");
+    localStorage.removeItem("authrefreshtoken")
+    navigate("login/",{replace:true})
+  }
+
   return(
     <div className='navbar'>
       <div className="nav-box">
@@ -21,7 +30,8 @@ const Navbar = () => {
         <div className="dropdown-content">
         <li>User info</li>
         <hr />
-          <Link to="login/"><li>Logout</li></Link>
+          <Link to="login/"><li></li></Link>
+          <button className='logout-button' onClick={handleLogout} >Logout</button>
            
           </div>
         </div>

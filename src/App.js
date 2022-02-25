@@ -18,8 +18,9 @@ import Modal from './components/Utils/Modal';
 
 function App() {
   return (
-    
+    <>
     <Router>
+      
       <Navbar/>
       <Routes>
         <Route path={"/"} element={
@@ -29,12 +30,18 @@ function App() {
         }>
           
         </Route>
-        <Route path={"/login"} element={<Login/>}></Route>
+        
         <Route path={"/signup"} element={<Signup/>}></Route>
         <Route path={"/newpost"} element={<NewPost/>}></Route>
         <Route path={"post/likes"} element={<Modal/>}></Route>  
+        <Route path={"/login"} element={<Login/>}></Route>
       </Routes>
+      
     </Router>
+
+    
+    </>
+    
     );
 }
 
