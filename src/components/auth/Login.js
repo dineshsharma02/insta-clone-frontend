@@ -6,7 +6,7 @@ import {
 import { useState } from 'react';
 import '../css/style.css';
 
-const Login = () => {
+const Login = (props) => {
     
 
     const [credentials, setCredentials] = useState({
@@ -22,12 +22,20 @@ const Login = () => {
     const handleLogin=async(e)=>{
         e.preventDefault();
         console.log(credentials.username,credentials.password);
-        const response = await fetch("http://127.0.0.1:8000/accounts/login/",{
-            method:"GET",
+        let token = localStorage.getItem['token']
+        if (token){
+            this.props.history.push('/')
+        }
+        const response = await fetch("http://127.0.0.1:8000/api/token/",{
+            method:"POST",
             headers:{
                 "Content-type":"application/json",
-                'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+                // 'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
             },
+            body: JSON.stringify({
+                "username":`${credentials.username}`,
+                "password":`${credentials.password}`
+            })
             
         });
 
@@ -36,7 +44,12 @@ const Login = () => {
         console.log(json);
         if (response.status===200){
             console.log("User Logged in");
-            
+            console.log(response);
+            window.localStorage.setItem("token",json['access'])
+            window.localStorage.setItem("refreshtoken",json['refresh'])
+            const token = localStorage.getItem("token")
+            const refresh = localStorage.getItem("refreshtoken")
+            console.log(token,refresh);
         }
         else{
             console.log(response);
