@@ -10,8 +10,8 @@ const Login = (props) => {
     let history = useNavigate();
 
     const [credentials, setCredentials] = useState({
-        'username':'abc',
-        'password':'abc',
+        'username':'',
+        'password':'',
     });
 
     const onChange=(e)=>{
@@ -54,6 +54,7 @@ const Login = (props) => {
         }
         else{
             console.log(response);
+            alert(response.statusText=="Unauthorized"?"Invalid credentials":response.statusText)
         }
     }
   return (
@@ -70,7 +71,7 @@ const Login = (props) => {
         
         <input type="text" name="password" id="" onChange={onChange} placeholder="Password" />
         
-        <input class="btn" type="submit" value="Login" />
+        <button disabled={credentials.username=="" || credentials.password==""} class="btn login-btn" type="submit">Login</button>
         </div>
       </form>
       
