@@ -9,6 +9,8 @@ import AddComment from './AddComment';
 const Feeditem = (props) => {
 
   let {id,username,image,likes,comments,caption,date} = props
+  const [pagelikes, setPageLikes] = useState(likes)
+
   console.log(image);
   const [userInfo, setUserInfo] = useState({
     'username':'',
@@ -20,7 +22,9 @@ const Feeditem = (props) => {
     'password':1898,
 });
   
-
+const handleLike=()=>{
+  setPageLikes(likes+1)
+}
 
 
   useEffect(async() => {
@@ -45,7 +49,6 @@ const Feeditem = (props) => {
         else{
             console.log(response);
         }
-  
         
   }, [])
   
@@ -58,7 +61,7 @@ const Feeditem = (props) => {
         <div className="post-details-area">
           <div className="post-options">
             <div className="left-options">
-            <i class="fa fa-heart"></i>
+            <button onClick={handleLike}><i class="fa fa-heart"></i></button>
               <i class="fa fa-comment"></i>
               <i class="fa fa-send-o"></i>
             </div>
@@ -67,7 +70,7 @@ const Feeditem = (props) => {
             </div>
           </div>
           <div className="liked-by">
-            {likes} <Link to={"post/likes"}>likes</Link>
+            {pagelikes} <Link to={"post/likes"}>likes</Link>
           </div>
           <div className="caption-box">
             <b>{username}</b> {caption}
