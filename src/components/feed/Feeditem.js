@@ -2,7 +2,7 @@ import React from 'react'
 import postimage from './me.jpg';
 import { useState,useEffect } from 'react';
 import {
-  Link
+  Link, useNavigate
 } from "react-router-dom";
 import AddComment from './AddComment';
 
@@ -10,6 +10,8 @@ const Feeditem = (props) => {
 
   let {id,username,image,likes,comments,caption,date} = props
   const [pagelikes, setPageLikes] = useState(likes)
+  const [isLiked, setIsLiked] = useState(false)
+  let history = useNavigate();
 
   console.log(image);
   const [userInfo, setUserInfo] = useState({
@@ -23,16 +25,28 @@ const Feeditem = (props) => {
 });
   
 const handleLike=()=>{
-  setPageLikes(likes+1)
+  if(!isLiked){
+    setPageLikes(likes+1)
+    setIsLiked(true)
+  }
+  else{
+    setPageLikes(likes)
+    setIsLiked(false)
+  }
 }
 
 
   useEffect(async() => {
+    let token = localStorage['authtoken']
+    console.log(token);
+    if (!token){
+      history("/login",{replace:true})
+    }
     const response = await fetch("http://127.0.0.1:8000/postimage/",{
             method:"GET",
             headers:{
                 "Content-type":"application/json",
-                'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
+                'Authorization': `Bearer ${token}`
             },
             
         });
@@ -61,7 +75,7 @@ const handleLike=()=>{
         <div className="post-details-area">
           <div className="post-options">
             <div className="left-options">
-            <button onClick={handleLike}><i class="fa fa-heart"></i></button>
+            <button className='likebtn' onClick={handleLike}><i class="fa fa-heart" style={{color: (isLiked==true?"red":"white")}}></i></button>
               <i class="fa fa-comment"></i>
               <i class="fa fa-send-o"></i>
             </div>
