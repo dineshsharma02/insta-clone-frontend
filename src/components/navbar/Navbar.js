@@ -28,9 +28,10 @@ const Navbar = () => {
         <div className="dropdown">
         <i class="fas fa-user"></i>
         <div className="dropdown-content">
-        <li>User info</li>
+        {/* <li></li> */}
+        <Link to="/userinfo"><li>User info</li></Link>
         <hr />
-          <Link to="login/"><li></li></Link>
+          {/* <Link to="login/"><li></li></Link> */}
           <button className='logout-button' onClick={handleLogout} >Logout</button>
            
           </div>

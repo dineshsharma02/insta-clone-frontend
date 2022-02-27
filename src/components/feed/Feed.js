@@ -37,6 +37,10 @@ const Feed = () => {
             setPosts(json)
             
         }
+        else if(response.status===401){
+          history("/login",{replace:true})
+        }
+
         else{
             console.log(response);
         }

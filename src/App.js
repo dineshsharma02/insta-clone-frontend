@@ -14,6 +14,7 @@ import NewPost from './components/feed/NewPost';
 import Navbar from './components/navbar/Navbar';
 import Feed from './components/feed/Feed';
 import Modal from './components/Utils/Modal';
+import UserInfo from './components/user/UserInfo';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path={"/newpost"} element={<NewPost/>}></Route>
         <Route path={"post/likes"} element={<Modal/>}></Route>  
         <Route path={"/login"} element={<Login/>}></Route>
+        <Route path={`/userinfo`} element={<UserInfo/>}></Route>
       </Routes>
       
     </Router>

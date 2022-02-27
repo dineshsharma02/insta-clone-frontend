@@ -98,3 +98,59 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     outline: none;
     background: none;
 }
+
+.main-container{
+    margin-top: 20px;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    /* background-color: blue; */
+}
+
+.prof-pic-container{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 400px;
+    background-size: cover;
+
+}
+.info-section{
+    padding: 10px;
+    /* background-color: pink; */
+    display: flex;
+    justify-content:space-evenly;
+}
+.post-section{
+    padding: 10px;
+    margin-top: 30px;
+    /* background-color: #85FFBD; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-follow{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.user-follow li{
+    list-style: none;
+    margin: 10px;
+}
+
+.username-caption-container{
+    margin-top: 5px;
+}
+
+.user-details{
+    width: 50%;
+}
+.line-breaker{
+    margin: 20px 0px;
+    border: 1px solid pink;
+    width: 100%;
+}

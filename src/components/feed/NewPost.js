@@ -11,6 +11,7 @@ import Done from "../Utils/Done"
 
 
 const NewPost = () => {
+  const [loading, setLoading] = useState(false)
   let history = useNavigate();
   let token = localStorage['authtoken']
   useEffect(() => {
@@ -51,7 +52,8 @@ const NewPost = () => {
     .then(res => {
       console.log(res.data);
       console.log("photo uploaded");
-      showGif()
+      // showGif()
+      history("/",{replace:true})
       
       
     })
