@@ -3,16 +3,19 @@ import '../css/feed.css';
 import Feeditem from './Feeditem';
 import { Link ,useNavigate} from 'react-router-dom'
 import { useState,useEffect } from 'react';
+import Loading from '../Utils/Loading';
+
 const Feed = () => {
   
   const [posts, setPosts] = useState([])
   let history = useNavigate();
-  
+  const [loading, setLoading] = useState(false)
   
 
 
 
   useEffect(async() => {
+    
     let token = localStorage['authtoken']
     console.log(token);
     if (!token){
@@ -52,6 +55,11 @@ const Feed = () => {
 
 
   return(
+    <>
+    {(loading===true)?<div className="center-container">
+    
+      <Loading/>
+    </div>:
     <div className='feed-posts'>
       {posts.map((element)=>{
         return <Feeditem 
@@ -66,6 +74,10 @@ const Feed = () => {
         />
       })}
     </div>
+
+    }
+    </>
+    
   )
 };
 

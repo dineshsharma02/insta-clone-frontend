@@ -6,6 +6,7 @@ import "../css/modal.css"
 import Me from "../feed/me.jpg"
 
 import Done from "../Utils/Done"
+import Loading from '../Utils/Loading';
 
 
 
@@ -35,6 +36,7 @@ const NewPost = () => {
 });
   const handleSubmit=(e)=>{
     e.preventDefault()
+    setLoading(true)
     console.log("This is onsubmit");
     let form_data = new FormData();
     console.log(image,image.name,caption);
@@ -52,13 +54,14 @@ const NewPost = () => {
     .then(res => {
       console.log(res.data);
       console.log("photo uploaded");
+      setLoading(false)
       // showGif()
       history("/",{replace:true})
       
       
     })
     .catch(err => console.log(err))
-  
+    setLoading(false)
 
   }
   const onChange=(e)=>{
@@ -85,6 +88,10 @@ const NewPost = () => {
   
   <>
 
+  {(loading===true)?<div className="center-container">
+    
+  <Loading/>
+  </div>:
   <div className="modal">
           <div className="modal-content">
               <div className="modal-header">
@@ -95,6 +102,7 @@ const NewPost = () => {
                   <Link to="/"><i class="fas fa-times"></i></Link>
               </div>
               <br />
+              
               <div className="modal-body newpost">
               <i class="fas fa-images upload-image"></i>
               <br/>
@@ -115,7 +123,7 @@ const NewPost = () => {
               
           </div>
       </div>
-      
+}
       {/* <Done></Done>  */}
   </>
 
