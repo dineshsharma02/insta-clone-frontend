@@ -5,7 +5,7 @@ import { Link ,useNavigate} from 'react-router-dom'
 import { useState,useEffect } from 'react';
 import Loading from '../Utils/Loading';
 
-const Feed = () => {
+const Feed = (props) => {
   
   const [posts, setPosts] = useState([])
   let history = useNavigate();
@@ -37,8 +37,9 @@ const Feed = () => {
         console.log(json);
         if (response.status===200){
           setLoading(false)
-            console.log("Posts fetched");
+            console.log("");
             setPosts(json)
+            props.showAlert("Posts fetched","info")
             
         }
         else if(response.status===401){
