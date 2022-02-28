@@ -15,7 +15,7 @@ const Feed = () => {
 
 
   useEffect(async() => {
-    
+    setLoading(true)
     let token = localStorage['authtoken']
     console.log(token);
     if (!token){
@@ -36,6 +36,7 @@ const Feed = () => {
         // console.log(response);
         console.log(json);
         if (response.status===200){
+          setLoading(false)
             console.log("Posts fetched");
             setPosts(json)
             
@@ -47,7 +48,7 @@ const Feed = () => {
         else{
             console.log(response);
         }
-  
+        setLoading(false)
         
   }, [])
 
