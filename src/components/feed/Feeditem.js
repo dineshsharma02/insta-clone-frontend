@@ -5,6 +5,7 @@ import {
   Link, useNavigate
 } from "react-router-dom";
 import AddComment from './AddComment';
+import Moment from 'react-moment';
 
 const Feeditem = (props) => {
 
@@ -92,7 +93,8 @@ const handleLike=()=>{
           <div className="comments">
             View all {comments} comments
           </div>
-          <span>{date}</span>
+          <Moment fromNow>{date}</Moment>
+          {/* <span>{date}</span> */}
           <AddComment id={id}></AddComment>
         </div>
     </div>
