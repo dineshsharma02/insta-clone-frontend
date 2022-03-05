@@ -2,6 +2,8 @@ import axios from "axios";
 import React,{ useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Feeditem from "../feed/Feeditem";
+import AllPosts from "../posts/AllPosts";
+
 import Me from "../Utils/Me";
 
 const UserInfo = () => {
@@ -78,7 +80,7 @@ const UserInfo = () => {
           <Me></Me>
         </div>
         <div className="user-details">
-          <h2>{userData[0].username}</h2>
+          <h2>{userData[1].username}</h2>
           <div className="user-follow">
             <li>{userData.length} Posts</li>
             <li>55 followers</li>
@@ -99,9 +101,8 @@ const UserInfo = () => {
     </div>
 
       <div className="post-section">
-        <Me></Me>
-        <Me></Me>
-        <Me></Me>
+        
+        <AllPosts></AllPosts>
       </div>
     </div>
   );
