@@ -80,7 +80,7 @@ const UserInfo = () => {
           <Me></Me>
         </div>
         <div className="user-details">
-          <h2>{userData[1].username}</h2>
+          {/* <h2>{userData[1].username}</h2> */}
           <div className="user-follow">
             <li>{userData.length} Posts</li>
             <li>55 followers</li>
@@ -88,7 +88,7 @@ const UserInfo = () => {
           </div>
 
           <div className="username-caption-container">
-          <h4>{userData[0].username}</h4>
+          {/* <h4>{userData[0].username}</h4> */}
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae illo nobis, hic aperiam pariatur omnis perspiciatis natus excepturi aspernatur explicabo unde, saepe quo!</p>
           </div>
           
