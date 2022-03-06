@@ -6,6 +6,7 @@ import Me from '../Utils/Me'
 import PostItem from './PostItem'
 
 const AllPosts = (props) => {
+  const username = localStorage['username']
 
     const [posts, setPosts] = useState([])
   let history = useNavigate();
@@ -23,7 +24,7 @@ const AllPosts = (props) => {
     else{
       history("/login",{replace:true})
     }
-    const response = await fetch("http://127.0.0.1:8000/userposts/1/",{
+    const response = await fetch(`http://127.0.0.1:8000/userposts/${username}`,{
             method:"GET",
             headers:{
                 "Content-type":"application/json",

@@ -7,8 +7,10 @@ import AllPosts from "../posts/AllPosts";
 import Me from "../Utils/Me";
 
 const UserInfo = () => {
+  const username = localStorage['username']
   let history = useNavigate()
   const [userData, setUserData] = useState([])
+  console.log(username);
   // let [postdata, setPostdata] = useState([])
   // useEffect(()=> {
   //   async function fetchUserInfo(){
@@ -40,12 +42,13 @@ const UserInfo = () => {
 
 
   useEffect(async() => {
+    
     let token = localStorage['authtoken']
     console.log(token);
     if (!token){
       history("/login",{replace:true})
     }
-    const response = await fetch("http://127.0.0.1:8000/userposts/1/",{
+    const response = await fetch(`http://127.0.0.1:8000/userposts/${username}`,{
             method:"GET",
             headers:{
                 "Content-type":"application/json",
@@ -61,6 +64,7 @@ const UserInfo = () => {
         if (response.status===200){
             console.log("Posts fetched");
             setUserData(json)
+            console.log(json);
             // setPosts(json)
             
         }
@@ -80,7 +84,7 @@ const UserInfo = () => {
           <Me></Me>
         </div>
         <div className="user-details">
-          <h2>{userData[1].username}</h2>
+          <h2>{username}</h2>
           <div className="user-follow">
             <li>{userData.length} Posts</li>
             <li>55 followers</li>
@@ -88,7 +92,7 @@ const UserInfo = () => {
           </div>
 
           <div className="username-caption-container">
-          <h4>{userData[0].username}</h4>
+          <h4>{username}</h4>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae illo nobis, hic aperiam pariatur omnis perspiciatis natus excepturi aspernatur explicabo unde, saepe quo!</p>
           </div>
           

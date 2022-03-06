@@ -48,6 +48,7 @@ const Login = (props) => {
             console.log(response);
             window.localStorage.setItem("authtoken",json['access'])
             window.localStorage.setItem("authrefreshtoken",json['refresh'])
+            window.localStorage.setItem("username",credentials.username)
             const token = localStorage.getItem("auth-token")
             const refresh = localStorage.getItem("auth-refreshtoken")
             console.log(token,refresh);
