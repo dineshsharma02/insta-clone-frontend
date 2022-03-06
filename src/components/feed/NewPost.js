@@ -57,11 +57,16 @@ const NewPost = () => {
       setLoading(false)
       // showGif()
       history("/",{replace:true})
+
+      if(res.status===401){
+        history("/login",{replace:true})
+      }
       
       
     })
     .catch(err => console.log(err))
     setLoading(false)
+    
 
   }
   const onChange=(e)=>{

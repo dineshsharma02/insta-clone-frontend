@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { checkLoggedIn } from '../Utils/AuthCheck'
 import Loading from '../Utils/Loading'
 import Me from '../Utils/Me'
 import PostItem from './PostItem'
@@ -16,8 +17,10 @@ const AllPosts = (props) => {
   useEffect(async() => {
     setLoading(true)
     let token = localStorage['authtoken']
-    console.log(token);
-    if (!token){
+    if (checkLoggedIn()){
+      
+    }
+    else{
       history("/login",{replace:true})
     }
     const response = await fetch("http://127.0.0.1:8000/userposts/1/",{
