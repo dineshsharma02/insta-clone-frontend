@@ -13,6 +13,11 @@ const Feeditem = (props) => {
   const [pagelikes, setPageLikes] = useState(likes)
   const [isLiked, setIsLiked] = useState(false)
   let history = useNavigate();
+  let token = localStorage['authtoken']
+    console.log(token);
+    if (!token){
+      history("/login",{replace:true})
+    }
 
   console.log(image);
   const [userInfo, setUserInfo] = useState({
@@ -25,10 +30,39 @@ const Feeditem = (props) => {
     'password':1898,
 });
   
-const handleLike=()=>{
+const handleLike=async(e)=>{
   if(!isLiked){
-    setPageLikes(likes+1)
-    setIsLiked(true)
+    
+    const response = await fetch("http://127.0.0.1:8000/likepost/",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              "post_id": `${id}`
+            }),
+            
+            
+        });
+        console.log(id);
+
+        const json = await response.json()
+        console.log(response.status)
+        // console.log(response);
+        console.log(json);
+        if (response.status===201){
+            console.log(`Post like by user_id =1 and post_id =  ${id}`);
+            // setPosts(json)
+            setPageLikes(likes+1)
+            setIsLiked(true)
+        }
+        else{
+            console.log(response);
+        }
+
+
+    
   }
   else{
     setPageLikes(likes)
@@ -38,11 +72,7 @@ const handleLike=()=>{
 
 
   useEffect(async() => {
-    let token = localStorage['authtoken']
-    console.log(token);
-    if (!token){
-      history("/login",{replace:true})
-    }
+    
     const response = await fetch("http://127.0.0.1:8000/postimage/",{
             method:"GET",
             headers:{

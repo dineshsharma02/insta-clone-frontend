@@ -3,6 +3,7 @@ import profpic from "../Utils/prof-image.jpg"
 const PostItem = (props) => {
     let {id , image,likes,comments,caption} = props
     console.log(id,likes,caption);
+    
   return (
       
     <>
@@ -10,7 +11,7 @@ const PostItem = (props) => {
     <img className='post-image' src={image} alt="not found" width={'250px'} height={'300px'}/>
     <div className="likes-card">
       <p>
-      <i class="fas fa-heart icons"></i> {likes}
+      <i class="fas fa-heart icons" ></i> {likes}
       
       <i class="fas fa-comment icons"></i> {comments}</p>
     </div>
