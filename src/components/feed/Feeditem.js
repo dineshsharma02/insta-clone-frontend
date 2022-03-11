@@ -82,7 +82,7 @@ const handleLike=async(e)=>{
             
         });
 
-        const json = await response.json()
+        let json = await response.json()
         console.log(response.status)
         // console.log(response);
         console.log(json);
@@ -94,8 +94,28 @@ const handleLike=async(e)=>{
         else{
             console.log(response);
         }
+    
+    const like = await fetch(`http://127.0.0.1:8000/isLiked/${id}/`,{
+      method:"GET",
+      headers:{
+          "Content-type":"application/json",
+          'Authorization': `Bearer ${token}`
+      },
+    });
+    
+    if (like.status===200){
+        console.log("Liked");
+        setIsLiked(true)
+        // setPosts(json)
+        
+    }
+    else{
+        console.log("Not Liked");
+        setIsLiked(false)
+    }
         
   }, [])
+  
   
 
 
@@ -116,12 +136,13 @@ const handleLike=async(e)=>{
           </div>
           <div className="liked-by">
             {pagelikes} <Link to={"post/likes"}>likes</Link>
+              
           </div>
           <div className="caption-box">
             <b>{username}</b> {caption}
           </div>
           <div className="comments">
-            View all {comments} comments
+            View all {comments} <Link to={"post/comments"}>comments</Link>
           </div>
           <Moment fromNow>{date}</Moment>
           {/* <span>{date}</span> */}

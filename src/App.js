@@ -16,6 +16,7 @@ import Feed from './components/feed/Feed';
 import Modal from './components/Utils/Modal';
 import UserInfo from './components/user/UserInfo';
 import Alert from './components/Utils/Alert';
+import ModalComment from './components/Utils/ModalComment';
 
 
 
@@ -48,7 +49,8 @@ const showAlert = (message,type) =>{
         
         <Route path={"/signup"} element={<Signup/>}></Route>
         <Route path={"/newpost"} element={<NewPost/>}></Route>
-        <Route path={"post/likes"} element={<Modal/>}></Route>  
+        <Route path={"post/likes"} element={<Modal/>}></Route>
+        <Route path={"post/comments/:post_id"} element={<ModalComment/>}></Route>   
         <Route path={"/login"} element={<Login/>}></Route>
         <Route path={`/userinfo`} element={<UserInfo/>}></Route>
       </Routes>
