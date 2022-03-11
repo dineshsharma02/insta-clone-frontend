@@ -65,7 +65,33 @@ const handleLike=async(e)=>{
     
   }
   else{
-    setPageLikes(likes)
+    // setPageLikes(likes)
+    const response = await fetch(`http://127.0.0.1:8000/delpostlike/${id}/`,{
+            method:"DELETE",
+            headers:{
+                "Content-type":"application/json",
+                'Authorization': `Bearer ${token}`
+            },
+             
+        });
+        console.log(id);
+
+        const json = await response.json()
+        console.log(response.status)
+        // console.log(response);
+        console.log(json);
+        if (response.status===202){
+            // setPosts(json)
+            setPageLikes(likes-1)
+            setIsLiked(false)
+        }
+        else{
+            console.log(response);
+        }
+
+
+
+
     setIsLiked(false)
   }
 }
@@ -116,7 +142,7 @@ const handleLike=async(e)=>{
         
   }, [])
   
-  
+
 
 
   return (
