@@ -2,40 +2,52 @@ import axios from 'axios';
 import React,{useState} from 'react'
 
 const AddComment = (props) => {
-  const [credentials, setCredentials] = useState({
-    'username':'admin',
-    'password':1898,
-});
+  let token = localStorage['authtoken']
+  
   const [comment, setComment] = useState()
+  const [val, setVal] = useState('')
   const id = props.id
   const onChange=(e)=>{
     setComment(e.target.value)
+    setVal(e.target.value)
   }
-  const handlePostComment=(e)=>{
+  const handlePostComment=async(e)=>{
     e.preventDefault()
-    let form_data = new FormData()
-    form_data.append('post_id',id)
-    form_data.append('comment',comment)
-    let url = 'http://127.0.0.1:8000/commentpost/'
-    const response = axios.post(url,form_data,{
-      headers:{
-        'content-type': 'multipart/form-data',
-          'Authorization': 'Basic ' + btoa(`${credentials.username}:${credentials.password}`)
-      },
-    })
-    .then(res=>{
-      console.log(res.data);
+    console.log("posting comment");
+    console.log(id);
+    const response = await fetch(`http://127.0.0.1:8000/commentpost/${id}/`,{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+                'Authorization': `Bearer ${token}`
+            },
+            body:JSON.stringify({
+              "comment":`${comment}`
+            })
+             
+        });
+        console.log(id);
 
-    })
-    .catch(err=>console.log(err))
+        const json = await response.json()
+        console.log(response.status)
+        // console.log(response);
+        console.log(json);
+        if (response.status===201){
+          console.log("Commented on the post");
+          setVal('')
+        }
+        else{
+          console.log(json);
+
+        }
 
   }
 
   return (
     <div className="comment-bar">
-          <form onSubmit={handlePostComment}>
-          <span><input type="text" placeholder='Add a comment' onChange={onChange}/></span>
-          <span><input type="submit" /></span>
+          <form onSubmit={handlePostComment} id = "comment-form" className="inline-form">
+          <span><input type="text" placeholder='Add a comment' onChange={onChange} value={val}/></span>
+          <span><input disabled={val?false:true} className='btn-comment' type="submit" value="Post" /></span>
           </form>
           </div>
   )

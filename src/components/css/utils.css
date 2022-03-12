@@ -46,3 +46,27 @@
 .icons{
     padding-left: 20px;
 }
+
+.inline-form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary{
+    background-color: aqua;
+}
+
+.btn-comment{
+    color: red;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+input[disabled=disabled], input:disabled {
+    opacity: 0.5;
+}
+
