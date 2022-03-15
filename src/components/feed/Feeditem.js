@@ -161,14 +161,17 @@ const handleLike=async(e)=>{
             </div>
           </div>
           <div className="liked-by">
-            {pagelikes} <Link to={"post/likes"}>likes</Link>
+            {pagelikes} <Link to={{
+              pathname:`post/likes/${id}`,
+              state:{ stateParam:true }
+              }}>likes</Link>
               
           </div>
           <div className="caption-box">
             <b>{username}</b> {caption}
           </div>
           <div className="comments">
-            View all {comments} <Link to={"post/comments"}>comments</Link>
+            View all {comments} <Link to={`post/comments/${id}`}>comments</Link>
           </div>
           <Moment fromNow>{date}</Moment>
           {/* <span>{date}</span> */}

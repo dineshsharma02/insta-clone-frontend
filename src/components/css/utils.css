@@ -68,5 +68,6 @@
 
 input[disabled=disabled], input:disabled {
     opacity: 0.5;
+    pointer-events: visibleStroke;
 }
 
