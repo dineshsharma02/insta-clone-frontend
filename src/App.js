@@ -17,6 +17,7 @@ import UserInfo from './components/user/UserInfo';
 import Alert from './components/Utils/Alert';
 import Likes from './components/feed/Likes';
 import Comments from './components/feed/Comments';
+import ChatHome from './components/chat/ChatHome';
 
 
 
@@ -53,6 +54,8 @@ const showAlert = (message,type) =>{
         <Route path={"post/comments/:post_id"} element={<Comments/>}></Route>   
         <Route path={"/login"} element={<Login/>}></Route>
         <Route path={`/userinfo`} element={<UserInfo/>}></Route>
+        <Route path={`/chat`} element={<ChatHome/>}></Route>
+        
       </Routes>
       
     </Router>

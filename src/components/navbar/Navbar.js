@@ -22,7 +22,7 @@ const Navbar = () => {
         </div>
         <div className="options-box">
         <Link to="/"><i class="fas fa-home"></i></Link>
-        <i class="fas fa-inbox"></i>
+        <Link to="/chat"><i class="fas fa-inbox"></i></Link>
         <Link to="newpost/"><i class="fas fa-upload"></i></Link>
         <i class="fas fa-heart"></i>
         <div className="dropdown">

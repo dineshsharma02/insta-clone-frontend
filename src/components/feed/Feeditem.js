@@ -153,7 +153,7 @@ const handleLike=async(e)=>{
           <div className="post-options">
             <div className="left-options">
             <button className='likebtn' onClick={handleLike}><i class="fa fa-heart" style={{color: (isLiked==true?"red":"white")}}></i></button>
-              <i class="fa fa-comment"></i>
+              <Link to={`post/comments/${id}`}><i class="fa fa-comment"></i></Link>
               <i class="fa fa-send-o"></i>
             </div>
             <div className="right-options">
