@@ -226,7 +226,58 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     color: white;
 }
 
-.chat-main-container{
-    
+/* .chat-container{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: 1px solid grey;
+    padding: 20px; 
+    display: flex;S
+    flex-direction: row;
+} */
+
+/* .chat-container .left-container{
+    padding:20px;
+    width: 40%;
+    border-right: 1px solid black;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
+
+.chat-container .right-container{
+    padding: 20px 20px 20px 20px;
+    width: fit-content;
+    border-right: 1px solid black;
+    height: 70vh;
+    overflow-y: scroll;
+} */
+
+.chat-grid-container{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    height: 70vh;
+    display: grid;
+    border: 1px solid black;
+    grid-template-columns: auto auto;
+}
+
+.message-summ-area{
+    overflow-y: scroll;
+}
+
+.username-area{
+    border-bottom: 1px solid grey;
+}
+
+.response-username-are{
+    border-bottom: 1px solid grey;
+}
+
+.all-messages-area{
+    border-top: 1px solid black;
+}
