@@ -32,10 +32,10 @@ const Login = (props) => {
                 "Content-type":"application/json",
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({
-                "username":`${credentials.username}`,
-                "password":`${credentials.password}`
-            })
+            // body: JSON.stringify({
+            //     "username":`${credentials.username}`,
+            //     "password":`${credentials.password}`
+            // })
             
         });
 
